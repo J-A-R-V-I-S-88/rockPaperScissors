@@ -17,8 +17,8 @@ function getComputerChoice(input){
 
 let i = 1
 while(i = 1){
-    let humanChoiceCased = getHumanChoice()
-    let humanChoice = humanChoiceCased.toLowerCase()
+    let humanChoiceRaw = getHumanChoice()
+    let humanChoice = humanChoiceRaw.trim.toLowerCase()
     let computerChoice = getComputerChoice(random(3))
     let phrase = `You choose ${humanChoice}! I choose ${computerChoice}.`
     if(humanChoice === computerChoice){
