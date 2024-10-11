@@ -3,39 +3,61 @@ function random(number){
     return Math.floor(Math.random() * number)
 }
 function getHumanChoice(){
-    return prompt("Rock paper or scissors?")
+    return prompt(`Rock paper or scissors?`)
 }
 function getComputerChoice(input){
     if(input === 0){
-        return "rock"
+        return `rock`
     } else if(input === 1){
-        return "paper"
+        return `paper`
     } else if(input === 2){
-        return "scissors"
+        return `scissors`
     }
 }
 
-let i = 1
-while(i = 1){
-    let humanChoiceRaw = getHumanChoice()
-    let humanChoice = humanChoiceRaw.trim().toLowerCase()
-    let computerChoice = getComputerChoice(random(3))
+let wins = 0
+let losses = 0
+let draws = 0
+// WLDL = winLossDrawLog
+let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+function rockPaperScissors(humanChoice, computerChoice){
     let phrase = `You choose ${humanChoice}! I choose ${computerChoice}.`
     if(humanChoice === computerChoice){
-        alert(phrase + " Draw!")
-    } else if(humanChoice === "paper" && computerChoice === "rock"){
-        alert(phrase + " You win!")
-    } else if(humanChoice === "paper" && computerChoice === "scissors"){
-        alert(phrase + " You lose!")
-    } else if(humanChoice === "scissors" && computerChoice === "paper"){
-        alert(phrase + " You win!")
-    } else if(humanChoice === "scissors" && computerChoice === "rock"){
-        alert(phrase + " You lose!")
-    } else if(humanChoice === "rock" && computerChoice === "scissors"){
-        alert(phrase + " You win!")
-    } else if(humanChoice === "rock" && computerChoice === "paper"){
-        alert(phrase + " You lose!")
+        draws = draws + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` Draw! ${WLDL}`)
+    } else if(humanChoice === `paper` && computerChoice === `rock`){
+        wins = wins + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` You win! ${WLDL}`)
+    } else if(humanChoice === `paper` && computerChoice === `scissors`){
+        losses = losses + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` You lose! ${WLDL}`)
+    } else if(humanChoice === `scissors` && computerChoice === `paper`){
+        wins = wins + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` You win! ${WLDL}`)
+    } else if(humanChoice === `scissors` && computerChoice === `rock`){
+        losses = losses + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` You lose! ${WLDL}`)
+    } else if(humanChoice === `rock` && computerChoice === `scissors`){
+        wins = wins + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` You win! ${WLDL}`)
+    } else if(humanChoice === `rock` && computerChoice === `paper`){
+        losses = losses + 1
+        let WLDL = `Wins: ${wins}. Losses: ${losses}. Draws: ${draws}.`
+        alert(phrase + ` You lose! ${WLDL}`)
     } else {
-        alert("That's not an option.")
+        alert(`That's not an option.`)
     }
+}
+
+while (true){
+    let humanChoiceRaw = getHumanChoice()
+    let human = humanChoiceRaw.trim().toLowerCase()
+    let computer = getComputerChoice(random(3))
+    rockPaperScissors(human, computer)
 }

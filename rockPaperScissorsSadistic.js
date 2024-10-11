@@ -11,14 +11,18 @@ function getComputerChoice(input){
         return "rock"
     }
 }
-let i = 1
-while(i = 1){
+let losses = 0
+function rockPaperScissors(humanChoice, computerChoice){
+    if(humanChoice ===  "rock" || humanChoice === "paper" || humanChoice === "scissors"){
+    losses = losses + 1
+    alert(`You chose ${humanChoice}. I chose ${computerChoice}. You lose! Wins: 0. Losses: ${losses}. Draws: 0.`)
+    } else {
+            alert("That's not an option.")
+        }
+    }
+while(true){
     let humanChoiceRaw = getHumanChoice()
     let humanChoice = humanChoiceRaw.trim().toLowerCase()
     let computerChoice = getComputerChoice(humanChoice)
-    if(humanChoice ===  "rock" || humanChoice === "paper" || humanChoice === "scissors"){
-    alert(`You chose ${humanChoice}. I chose ${computerChoice}. You lose!`)
-    } else {
-        alert("That's not an option.")
-    }
+rockPaperScissors(humanChoice, computerChoice)
 }
